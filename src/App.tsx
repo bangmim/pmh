@@ -7,10 +7,11 @@ import './App.css';
 
 function App() {
     return (
-        <Router>
+        <Router basename="">
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<Home />} />
+                    <Route path="/pmh" element={<Home />} />
+                    <Route path="/" element={<Home />} />
                     <Route path="about" element={<About />} />
                     <Route path="project" element={<Project />} />
                 </Route>
