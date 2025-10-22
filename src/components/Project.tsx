@@ -41,7 +41,7 @@ export default function Project() {
             ],
             highlights: [
                 '실시간 채팅: WebSocket(STOMP) 기반 채팅 시스템 구현',
-                '커뮤니티 기능: 댓글/좋아요 시스템, 실시간 알림 구현',
+                '커뮤니티 기능: 게시글 작성/수정/삭제(CRUD), 댓글/좋아요 기능 구현',
                 '약국 관리: 약국 운영을 위한 종합 관리 서비스 개발',
                 '전역 상태 관리: Context API, Redux, Zustand를 활용한 전역 모달 설계',
             ],
