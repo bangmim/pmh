@@ -44,6 +44,7 @@ export default function Project() {
                 '커뮤니티 기능: 게시글 작성/수정/삭제(CRUD), 댓글/좋아요 기능 구현',
                 '약국 관리: 약국 운영을 위한 종합 관리 서비스 개발',
                 '전역 상태 관리: Context API, Redux, Zustand를 활용한 전역 모달 설계',
+                'React(웹) 기반 웹뷰(WebView) 개발: React Native 앱 내 단발성 이벤트 페이지 구현 (스토어 심사 없이 즉시 배포 및 리소스 효율화)',
             ],
             review: 'WebSocket(STOMP)을 활용한 실시간 채팅, Context API/Redux/Zustand를 활용한 전역 상태 관리 등 다양한 기술을 프로젝트 요구사항에 맞게 선택하여 적용했습니다. 48,000명의 사용자를 대상으로 하는 만큼 성능 최적화와 안정성에 중점을 두었으며, 사용자 피드백을 반영한 지속적인 개선 작업을 경험했습니다.',
         },
