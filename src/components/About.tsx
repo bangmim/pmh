@@ -5,7 +5,7 @@ export default function About() {
         {
             icon: '📱',
             name: 'React Native',
-            desc: '실무 앱 개발 및 유지보수 (2023.10 ~ 현재)',
+            desc: '실무 앱 개발 및 유지보수 ',
         },
         {
             icon: '⚛️',
@@ -37,15 +37,11 @@ export default function About() {
             name: 'Git / 앱 스토어',
             desc: 'iOS/Android 배포 및 버전 관리',
         },
-    ];
-
-    const experiences = [
-        '모바일 앱 개발 및 유지보수 (2023.10 ~ 현재, 48,000명 사용자 대상)',
-        '디자인/기획자와 협업하여 요구사항 분석 및 기능 구현',
-        'WebSocket(STOMP) 기반 실시간 채팅 시스템 개발',
-        'Redux, Zustand, Context API를 활용한 전역 상태 관리',
-        '사용자 피드백 기반 기능 개선 및 성능 최적화',
-        'iOS / Android 스토어 배포 및 버전 관리',
+        {
+            icon: <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="Figma" className="w-6 h-6" />,
+            name: 'Figma',
+            desc: '디자인 협업 및 프로토타이핑',
+        },
     ];
 
     return (
@@ -72,37 +68,55 @@ export default function About() {
                     한국방송통신대학교에서 컴퓨터과학을 공부하며 개발 실무와 이론을 병행하고 있으며, 더 나은 개발자가
                     되기 위해 꾸준히 학습하고 있습니다.
                 </p>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    개발할 때는 코드 가독성과 재사용성을 중요하게 생각하며, 리팩토링을 통해 지속적으로 코드 품질을
+                    개선하려고 노력합니다. 또한 동료들과 충분히 소통하고 협업하는 과정을 통해 더 나은 결과물을 만드는
+                    것을 지향합니다.
+                </p>
             </div>
-
-            {/* 학습 배경 */}
+            {/* 학습 배경 / 경력 */}
             <div className="section">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                    <span>📚</span>
-                    교육 및 경력
-                </h2>
-                <div className="space-y-5">
-                    <div className="border-l-4 border-gray-900 pl-4">
-                        <p className="font-bold text-gray-900 mb-1">한국방송통신대학교 컴퓨터과학과</p>
-                        <p className="text-gray-600 mb-2">재학 중 (4학년)</p>
-                        <p className="text-sm text-gray-500">컴퓨터과학 기초 이론 및 알고리즘, 자료구조 학습</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* 교육 */}
+                    <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-3">교육</h3>
+                        <div className="space-y-4">
+                            <div className="border-l-4 border-gray-900 pl-4">
+                                <p className="font-bold text-gray-900 mb-1">한국방송통신대학교 컴퓨터과학과</p>
+                                <p className="text-gray-600 mb-2">재학 중 (4학년)</p>
+                                <p className="text-sm text-gray-500">컴퓨터과학 기초 이론 및 알고리즘, 자료구조 학습</p>
+                            </div>
+                            <div className="border-l-4 border-gray-400 pl-4">
+                                <p className="font-bold text-gray-900 mb-1">코리아IT아카데미학원</p>
+                                <p className="text-gray-600 mb-2">프론트엔드 개발 과정 수료</p>
+                                <p className="text-sm text-gray-500">HTML, CSS, JavaScript, React 기반 웹 개발</p>
+                            </div>
+                        </div>
                     </div>
-                    <div className="border-l-4 border-gray-400 pl-4">
-                        <p className="font-bold text-gray-900 mb-1">React Native 앱 개발</p>
-                        <p className="text-gray-600 mb-2">2023.10 ~ 현재 (재직 중)</p>
-                        <p className="text-sm text-gray-500">
-                            약국 관리 모바일 앱 개발 및 유지보수 (누적 사용자 48,000명)
-                        </p>
+
+                    {/* 경력 */}
+                    <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-3">경력</h3>
+                        <div className="space-y-4">
+                            <div className="border-l-4 border-gray-900 pl-4">
+                                <p className="font-bold text-gray-900 mb-1">React Native 앱 개발</p>
+                                <p className="text-gray-600 mb-2">2023.10 ~ 현재 (재직 중)</p>
+                                <p className="text-sm text-gray-500">약국 관리 모바일 앱 개발 및 유지보수</p>
+                            </div>
+                        </div>
                     </div>
-                    <div className="border-l-4 border-gray-400 pl-4">
-                        <p className="font-bold text-gray-900 mb-1">코리아IT아카데미학원</p>
-                        <p className="text-gray-600 mb-2">프론트엔드 개발 과정 수료</p>
-                        <p className="text-sm text-gray-500">HTML, CSS, JavaScript, React 기반 웹 개발</p>
+                    {/* 자격 */}
+                    <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-3">자격증</h3>
+                        <div className="border-l-4 border-gray-900 pl-4">
+                            <p className="font-bold text-gray-900 mb-1">SQLD 자격증</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             {/* 업무 경험 */}
-            <div className="section">
+            {/* <div className="section">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                     <span>🎯</span>
                     주요 업무 경험
@@ -115,15 +129,12 @@ export default function About() {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </div> */}
 
             {/* 기술 스택 */}
             <div className="section">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                    <span>💻</span>
-                    기술 스택 및 경험
-                </h2>
-                <div className="grid grid-cols-1 gap-4">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">기술 스택 및 경험</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {skills.map((skill, index) => (
                         <div
                             key={index}
@@ -137,79 +148,6 @@ export default function About() {
                         </div>
                     ))}
                 </div>
-            </div>
-
-            {/* 업무 방식 */}
-            <div className="section">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">업무 방식</h2>
-                <div className="space-y-3 text-gray-700">
-                    <p className="flex items-start gap-2">
-                        <span className="text-gray-900 font-bold mt-1">•</span>
-                        <span>
-                            코드 가독성과 재사용성을 고려하며, 리팩토링을 통해 지속적으로 코드 품질을 개선합니다.
-                        </span>
-                    </p>
-                    <p className="flex items-start gap-2">
-                        <span className="text-gray-900 font-bold mt-1">•</span>
-                        <span>팀원들과 적극적으로 소통하며 협업합니다.</span>
-                    </p>
-                </div>
-            </div>
-
-            {/* Contact */}
-            <div className="section">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                    <span>📬</span>
-                    Contact
-                </h2>
-                <div className="space-y-4">
-                    <div className="flex items-center gap-3 text-gray-700">
-                        <span className="text-2xl">📧</span>
-                        <div>
-                            <p className="text-sm text-gray-500 mb-1">Email</p>
-                            <a
-                                href="mailto:akiyun10@gmail.com"
-                                className="text-lg hover:text-gray-900 transition-colors"
-                            >
-                                akiyun10@gmail.com
-                            </a>
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-3 text-gray-700">
-                        <svg
-                            className="w-8 h-8 text-gray-600"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
-                        <div>
-                            <p className="text-sm text-gray-500 mb-1">View Source Code</p>
-                            <a
-                                href="https://github.com/bangmim/pmh"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-lg hover:text-gray-900 transition-colors"
-                            >
-                                github.com/bangmim/pmh
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* 마무리 메시지 */}
-            <div className="section bg-gray-900 text-white p-8">
-                <p className="text-xl md:text-2xl font-medium leading-relaxed">
-                    실무 경험과 학업을 병행하며 성장하고 있습니다.
-                    <br />
-                    앞으로도 사용자에게 가치 있는 서비스를 만드는 개발자가 되겠습니다.
-                </p>
             </div>
         </div>
     );

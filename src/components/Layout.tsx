@@ -1,17 +1,102 @@
-import React from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import Home from './Home';
+import About from './About';
+import Project from './Project';
+import { resolvePublicUrl } from './Project';
 
 export default function Layout() {
-    const location = useLocation();
+    const [activePath, setActivePath] = useState<string>(window.location.hash || '#home');
+
+    // 최초 로드 시 항상 맨 위로 이동하고 해시를 #home으로 맞춤
+    useEffect(() => {
+        if ('scrollRestoration' in window.history) {
+            window.history.scrollRestoration = 'manual';
+        }
+        if (window.location.hash !== '#about') {
+            window.history.replaceState(null, '', '#about');
+        }
+        window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
+        const handleHashChange = () => {
+            setActivePath(window.location.hash || '#about');
+        };
+        handleHashChange();
+        window.addEventListener('hashchange', handleHashChange);
+        return () => window.removeEventListener('hashchange', handleHashChange);
+    }, []);
+
+    // 스크롤 위치에 따라 활성 탭 업데이트 (중앙 근처 섹션 기준)
+    useEffect(() => {
+        const sectionIds = ['about', 'project'];
+
+        const updateActiveByScroll = () => {
+            const centerY = window.innerHeight * 0.4; // 화면 상단 고정 네비 고려하여 살짝 위쪽
+            let current: string | null = null;
+
+            for (const id of sectionIds) {
+                const el = document.getElementById(id);
+                if (!el) continue;
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= centerY && rect.bottom >= centerY) {
+                    current = `#${id}`;
+                    break;
+                }
+            }
+
+            // 중앙에 걸친 섹션이 없으면, 가장 위쪽에 가까운 섹션 사용
+            if (!current) {
+                let bestId: string | null = null;
+                let bestDist = Number.POSITIVE_INFINITY;
+                for (const id of sectionIds) {
+                    const el = document.getElementById(id);
+                    if (!el) continue;
+                    const rect = el.getBoundingClientRect();
+                    const dist = Math.abs(rect.top - 80); // 고정 헤더 보정
+                    if (dist < bestDist) {
+                        bestDist = dist;
+                        bestId = id;
+                    }
+                }
+                if (bestId) current = `#${bestId}`;
+            }
+
+            const currentHash = window.location.hash || '#about';
+            if (current && current !== currentHash) {
+                setActivePath(current);
+                window.history.replaceState(null, '', current);
+            }
+        };
+
+        // rAF로 스크롤 핸들러 최적화
+        let ticking = false;
+        const onScroll = () => {
+            if (!ticking) {
+                ticking = true;
+                window.requestAnimationFrame(() => {
+                    updateActiveByScroll();
+                    ticking = false;
+                });
+            }
+        };
+
+        updateActiveByScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', onScroll);
+        };
+    }, []);
 
     const isActive = (path: string) => {
-        return location.pathname === path;
+        return activePath === path;
     };
 
     const navItems = [
-        { path: '/', label: 'Home' },
-        { path: '/about', label: 'About' },
-        { path: '/project', label: 'Project' },
+        { path: '#about', label: 'About' },
+        { path: '#project', label: 'Project' },
     ];
 
     return (
@@ -21,8 +106,8 @@ export default function Layout() {
                 <ul className="flex justify-center items-center h-16 px-4">
                     {navItems.map((item) => (
                         <li key={item.path} className="flex-1">
-                            <Link
-                                to={item.path}
+                            <a
+                                href={item.path}
                                 className={`
                                     block text-center py-2 transition-all duration-200
                                     ${
@@ -33,7 +118,7 @@ export default function Layout() {
                                 `}
                             >
                                 {item.label}
-                            </Link>
+                            </a>
                         </li>
                     ))}
                 </ul>
@@ -45,7 +130,7 @@ export default function Layout() {
                     {/* 프로필 */}
                     <div className="w-36 h-36 rounded-full overflow-hidden mb-6 transition-all duration-300">
                         <img
-                            src="https://bangmim.github.io/pmh/img/pmh.jpg"
+                            src={resolvePublicUrl('/img/pmh.png')}
                             alt="박미현"
                             className="w-full h-full object-cover"
                         />
@@ -54,31 +139,14 @@ export default function Layout() {
                     <h1 className="text-2xl font-bold text-gray-900 mb-2">박미현</h1>
                     <p className="text-lg text-gray-600 font-medium mb-1">Frontend Developer</p>
                     <p className="text-sm text-gray-500 mb-2">2023.10 - Present</p>
-                    <p className="text-xs text-gray-500 mb-8">
-                        <a
-                            href="https://github.com/bangmim/pmh"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-1 hover:text-gray-900 transition-colors"
-                        >
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path
-                                    fillRule="evenodd"
-                                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-                            View Source Code
-                        </a>
-                    </p>
 
                     {/* 네비게이션 */}
                     <nav className="w-full">
                         <ul className="space-y-2">
                             {navItems.map((item) => (
                                 <li key={item.path}>
-                                    <Link
-                                        to={item.path}
+                                    <a
+                                        href={item.path}
                                         className={`
                                             block px-6 py-3 text-center font-medium transition-all duration-200
                                             ${
@@ -89,7 +157,7 @@ export default function Layout() {
                                         `}
                                     >
                                         {item.label}
-                                    </Link>
+                                    </a>
                                 </li>
                             ))}
                         </ul>
@@ -100,7 +168,18 @@ export default function Layout() {
             {/* 메인 컨텐츠 */}
             <main className="pt-20 md:pt-12 md:ml-80 px-6 md:px-12 pb-12">
                 <div className="max-w-4xl mx-auto animate-fade-in">
-                    <Outlet />
+                    {/* <section id="home" className="scroll-mt-24 md:scroll-mt-16 mb-16">
+                        <Home />
+                    </section> */}
+                    <section id="about" className="scroll-mt-24 md:scroll-mt-16 mb-16">
+                        <About />
+                    </section>
+                    <section
+                        id="project"
+                        className="scroll-mt-24 md:scroll-mt-16 border-t border-gray-100 pt-10"
+                    >
+                        <Project />
+                    </section>
                 </div>
             </main>
 
