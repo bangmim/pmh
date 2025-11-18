@@ -1,8 +1,4 @@
 # 캐시 파일들
 .eslintcache
 *.tsbuildinfo
-<<<<<<< HEAD
 node_modules/
-=======
-node_modules/
->>>>>>> 29918967 (chore: node_modules gitignore 규칙 수정)
