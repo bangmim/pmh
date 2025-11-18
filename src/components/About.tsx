@@ -70,8 +70,8 @@ export default function About() {
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
                     개발할 때는 코드 가독성과 재사용성을 중요하게 생각하며, 리팩토링을 통해 지속적으로 코드 품질을
-                    개선하려고 노력합니다. 또한 동료들과 충분히 소통하고 협업하는 과정을 통해 더 나은 결과물을 만드는
-                    것을 지향합니다.
+                    개선하려고 노력합니다. <br />
+                    또한 동료들과 충분히 소통하고 협업하는 과정을 통해 더 나은 결과물을 만드는 것을 지향합니다.
                 </p>
             </div>
             {/* 학습 배경 / 경력 */}
@@ -109,27 +109,12 @@ export default function About() {
                     <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-3">자격증</h3>
                         <div className="border-l-4 border-gray-900 pl-4">
-                            <p className="font-bold text-gray-900 mb-1">SQLD 자격증</p>
+                            <p className="font-bold text-gray-900 mb-1">SQL개발자(SQLD자격)</p>
+                            <p className="text-gray-600 mb-2">2023.04 취득</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            {/* 업무 경험 */}
-            {/* <div className="section">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                    <span>🎯</span>
-                    주요 업무 경험
-                </h2>
-                <ul className="space-y-3">
-                    {experiences.map((exp, index) => (
-                        <li key={index} className="flex items-start gap-3 text-lg text-gray-700">
-                            <span className="text-gray-900 font-bold mt-1">•</span>
-                            <span>{exp}</span>
-                        </li>
-                    ))}
-                </ul>
-            </div> */}
 
             {/* 기술 스택 */}
             <div className="section">

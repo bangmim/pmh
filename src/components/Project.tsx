@@ -250,20 +250,21 @@ export default function Project() {
             {/* 학습 프로젝트 */}
             <div className="section border-t border-gray-100">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">개인 학습 프로젝트</h2>
-                <p className="text-gray-600 mb-6">프론트엔드 개발 학습 과정에서 진행한 프로젝트입니다.</p>
+                <p className="text-gray-600 mb-6 text-base">프론트엔드 개발 학습 과정에서 진행한 프로젝트입니다.</p>
                 <div className="space-y-6">
                     {learningProjects.map((project, index) => (
                         <div
                             key={index}
                             className="p-6 border-l-4 border-gray-400 hover:border-gray-900 transition-colors duration-200 bg-gray-50"
                         >
-                            <h3 className="font-bold text-gray-900 mb-2 text-lg">{project.title}</h3>
+                            <h3 className="font-bold text-gray-900 mb-2 text-xl">{project.title}</h3>
                             <p className="text-sm text-blue-600 font-medium mb-3">{project.description}</p>
                             <p className="text-sm text-gray-600 mb-4">{project.skills}</p>
                             {project.review && (
-                                <p className="text-sm text-gray-700 leading-relaxed mb-4 p-4 bg-white border-l-2 border-gray-300">
-                                    {project.review}
-                                </p>
+                                <div className="mb-4 p-4 bg-white border-l-2 border-gray-300">
+                                    <h4 className="text-base font-semibold text-gray-700 mb-2">역할 및 경험</h4>
+                                    <p className="text-base text-gray-700 leading-relaxed">{project.review}</p>
+                                </div>
                             )}
                             <a
                                 href={project.link}
@@ -279,10 +280,7 @@ export default function Project() {
             </div>
             {/* Contact */}
             <div className="section">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                    <span>📬</span>
-                    Contact
-                </h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">Contact</h2>
                 <div className="space-y-4">
                     <div className="flex items-center gap-3 text-gray-700">
                         <span className="text-2xl">📧</span>
