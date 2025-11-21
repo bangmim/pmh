@@ -52,7 +52,7 @@ export default function Home() {
             <div className="md:hidden text-center mb-12">
                 <div className="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6">
                     <img
-                        src="https://bangmim.github.io/pmh/img/pmh.jpg"
+                        src="https://bangmim.github.io/my-frontend-portfolio/img/pmh.jpg"
                         alt="박미현"
                         className="w-full h-full object-cover"
                     />

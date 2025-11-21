@@ -43,7 +43,7 @@ export default function Project() {
             id: 1,
             title: `"약매니저" 앱 프로젝트`,
             subtitle: 'React Native 앱 개발 및 유지보수 (2023.10 ~ 현재)',
-            image: 'https://bangmim.github.io/pmh/img/pmh.jpg',
+            image: 'https://bangmim.github.io/my-frontend-portfolio/img/pmh.jpg',
             description:
                 '약국 및 의료기관을 위한 종합 관리 앱입니다. 2023년 10월부터 현재까지 개발 및 유지보수를 담당하고 있으며, 현재 48,000명의 사용자가 이용하고 있습니다.',
             skills: [
@@ -310,7 +310,7 @@ export default function Project() {
                         <div>
                             <p className="text-sm text-gray-500 mb-1">View Source Code</p>
                             <a
-                                href="https://github.com/bangmim/pmh"
+                                href="https://github.com/bangmim/my-frontend-portfolio"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-lg hover:text-gray-900 transition-colors"

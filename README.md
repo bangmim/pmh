@@ -4,7 +4,7 @@
 
 ## 🔗 배포 주소
 
-https://bangmim.github.io/pmh
+https://bangmim.github.io/my-frontend-portfolio
 
 ## 🛠️ 기술 스택
 
